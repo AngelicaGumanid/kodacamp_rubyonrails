@@ -5,17 +5,19 @@
   <td>title</td>
   <td>content</td>
   <td>category</td>
+  <td>user</td>
   <td>action</td>
   </thead>
   <% @posts.each do |post| %>
     <tr>
       <td><%= post.title %></td>
       <td><%= post.content %></td>
+      <td><%= post.user&.email %></td>
       <td><%= post.categories.pluck(:name).join(',') %></td>
       <td>
         <%= link_to 'Show', post_path(post) %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-        <%= button_to 'Delete', post_path(post), method: :delete %>
+        <%= link_to 'Edit', edit_post_path(post) if user_signed_in? && post.user == current_user %>
+        <%= button_to 'Delete', post_path(post), method: :delete if user_signed_in? && post.user == current_user %>
         <%= link_to 'Comments', post_comments_path(post) %>
         <%= link_to 'New Comment', new_post_comment_path(post) %>
       </td>
