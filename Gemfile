@@ -70,5 +70,6 @@ group :development do
 
   gem 'faker'
 
+  gem 'kaminari'
 end
 
