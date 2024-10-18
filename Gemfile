@@ -71,5 +71,8 @@ group :development do
   gem 'faker'
 
   gem 'kaminari'
+
+  gem 'carrierwave'
+
 end
 
