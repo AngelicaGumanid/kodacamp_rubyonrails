@@ -68,5 +68,7 @@ group :development do
 
   gem "devise"
 
+  gem 'faker'
+
 end
 
