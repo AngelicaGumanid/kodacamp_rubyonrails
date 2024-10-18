@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_18_030829) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_18_060847) do
+  create_table "address_barangays", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "city_id"
+    t.string "code"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_address_barangays_on_city_id"
+  end
+
+  create_table "address_cities", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "province_id"
+    t.string "code"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["province_id"], name: "index_address_cities_on_province_id"
+  end
+
+  create_table "address_provinces", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "region_id"
+    t.string "code"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["region_id"], name: "index_address_provinces_on_region_id"
+  end
+
+  create_table "address_regions", charset: "utf8mb4", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
